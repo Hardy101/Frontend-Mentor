@@ -1,10 +1,11 @@
 import React from "react";
 import logo from "../assets/images/logo-full.svg";
+import info from "../assets/images/icon-info.svg";
 
 const ConferenceTicket: React.FC = () => {
   return (
     <>
-      <main className="h-screen text-neutral-0 bg-[url('./assets/images/background-desktop.png')] bg-[50%] bg-center bg-no-repeat font-ir">
+      <main className="px-8 text-neutral-0 bg-[url('./assets/images/background-desktop.png')] bg-[50%] bg-center bg-no-repeat font-ir">
         <div className="md:w-2/5 mx-auto py-10 text-center">
           <div className="heading">
             <img src={logo} alt="logo" className="mx-auto" />
@@ -15,7 +16,7 @@ const ConferenceTicket: React.FC = () => {
               Secure your spot at next year's biggest coding conference.
             </p>
           </div>
-          <div className="body mt-6 w-3/5 mx-auto">
+          <div className="body mt-6 w-4/6 mx-auto">
             <form action="#" className="grid gap-2">
               <div className="form-control">
                 <label
@@ -31,6 +32,10 @@ const ConferenceTicket: React.FC = () => {
                   />
                   <span>Drag and drop or click to upload</span>
                 </label>
+                <p className="text-xs flex text-neutral-500">
+                  <img src={info} alt="" className="my-auto"/>
+                  <span className="my-auto">Upload your photo (JPG or PNG, max size: 500KB)</span>
+                </p>
               </div>
               <div className="form-control grid text-left gap-2">
                 <label htmlFor="fname">Full Name</label>
