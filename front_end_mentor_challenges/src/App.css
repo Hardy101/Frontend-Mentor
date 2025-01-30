@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neutral-0: hsl(0, 0%, 100%);
+  --color-neutral-300: hsl(252, 6%, 83%);
+  --color-neutral-500: hsl(245, 15%, 58%);
+  --color-neutral-700: hsl(245, 19%, 35%);
+  --color-neutral-900: hsl(248, 70%, 10%);
+
+  --color-orange-500: hsl(7, 88%, 67%);
+  --color-orange-700: hsl(7, 71%, 60%);
+
+  --color-gradient-text: linear-gradient(
+    to right,
+    hsl(7, 86%, 67%),
+    hsl(0, 0%, 100%)
+  );
+
+  --color-desktop: url("./assets/images/background-desktop.png");
+
+  --font-ir: inconsolata-regular;
+  --font-imedium: inconsolata-medium;
+  --font-ibold: inconsolata-bold;
+  --font-ixbold: inconsolata-xtrabold;
+}
+
+@font-face {
+  font-family: inconsolata-regular;
+  src: url("./assets/fonts/static/Inconsolata-Regular.ttf");
+}
+@font-face {
+  font-family: inconsolata-medium;
+  src: url("./assets/fonts/static/Inconsolata-Medium.ttf");
+}
+@font-face {
+  font-family: inconsolata-bold;
+  src: url("./assets/fonts/static/Inconsolata-Bold.ttf");
+}
+@font-face {
+  font-family: inconsolata-xtrabold;
+  src: url("./assets/fonts/static/Inconsolata-ExtraBold.ttf");
+}
