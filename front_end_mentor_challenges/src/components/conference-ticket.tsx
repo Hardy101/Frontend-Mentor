@@ -6,17 +6,19 @@ import upload from "../assets/images/icon-upload.svg";
 interface FormData {
   name: string;
   email: string;
-  guname: string;
+  ghubname: string;
 }
 
 const ConferenceTicket: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    guname: "",
+    ghubname: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>):void => {
+  const [errors, setErrors] = useState<{ email?: string }>;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -64,8 +66,8 @@ const ConferenceTicket: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  name="fname"
-                  id="fname"
+                  name="name"
+                  id="name"
                   value={formData.name}
                   onChange={handleChange}
                   className="p-2 rounded-lg bg-neutral-900 border border-neutral-500 placeholder:text-neutral-500 text-sm outline-none"
@@ -100,7 +102,7 @@ const ConferenceTicket: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  name="ghuname"
+                  name="ghubname"
                   id="ghubname"
                   value={formData.guname}
                   onChange={handleChange}
