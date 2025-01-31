@@ -21,7 +21,9 @@ const ConferenceTicket: React.FC = () => {
     previewUrl: null,
   });
 
-  const [errors, setErrors] = useState<{ email?: string }>({});
+  const [errors, setErrors] = useState<{ file?: string; email?: string }>({});
+
+  const validate = (): void => {};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -31,9 +33,31 @@ const ConferenceTicket: React.FC = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const selectedFile = e.target.files?.[0] || null;
+
     if (selectedFile) {
-      const previewUrl = URL.createObjectURL(selectedFile);
-      setFormData({ ...formData, file: selectedFile, previewUrl: previewUrl });
+      if (!selectedFile.type.startsWith("image/")) {
+        setErrors((prev) => ({
+          ...prev,
+          file: "Only image files are allowed!",
+        }));
+        return;
+      }
+      if (selectedFile.size > 500 * 1024) {
+        setErrors((prev) => ({
+          ...prev,
+          file: "File too large. Please upload a photo under 500KB",
+        }));
+        setFormData({ ...formData, file: null, previewUrl: null });
+        return;
+      } else {
+        const previewUrl = URL.createObjectURL(selectedFile);
+        setFormData({
+          ...formData,
+          file: selectedFile,
+          previewUrl: previewUrl,
+        });
+      }
+      setErrors((prev) => ({ ...prev, file: "" }));
     }
   };
 
@@ -107,11 +131,18 @@ const ConferenceTicket: React.FC = () => {
                     </p>
                   )}
                 </label>
-                <p className="text-xs flex text-neutral-500 mt-2 ">
+                {/* Error Catcher */}
+                <p className="text-xs flex gap-4 text-neutral-500 mt-2 ">
                   <img src={info} alt="" className="my-auto" />
-                  <span className="my-auto">
-                    Upload your photo (JPG or PNG, max size: 500KB)
-                  </span>
+                  {errors.file ? (
+                    <span className="my-auto text-orange-500">
+                      File too large. Please upload a photo under 500KB.
+                    </span>
+                  ) : (
+                    <span className="my-auto">
+                      Upload your photo (JPG or PNG, max size: 500KB)
+                    </span>
+                  )}
                 </p>
               </div>
               <div className="form-control grid text-left gap-2">
