@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/images/logo-full.svg";
 import info from "../assets/images/icon-info.svg";
+import upload from "../assets/images/icon-upload.svg";
 
 const ConferenceTicket: React.FC = () => {
   return (
@@ -17,28 +18,32 @@ const ConferenceTicket: React.FC = () => {
             </p>
           </div>
           <div className="body mt-6 w-4/6 mx-auto">
-            <form action="#" className="grid gap-2">
-              <div className="form-control">
-                <label
-                  htmlFor="avatar"
-                  className="grid gap-2 border-spacing-5   border-2 border-dashed border-neutral-500"
-                >
-                  <span className="text-left">Upload Avatar</span>
-                  <input
-                    type="file"
-                    name="avatar"
-                    id="avatar"
-                    className="w-0 h-0"
-                  />
-                  <span>Drag and drop or click to upload</span>
-                </label>
-                <p className="text-xs flex text-neutral-500">
-                  <img src={info} alt="" className="my-auto"/>
-                  <span className="my-auto">Upload your photo (JPG or PNG, max size: 500KB)</span>
+            <form action="#" className="grid gap-2 text-left">
+              <div className="form-control grid gap-1">
+                <label htmlFor="avatar">Upload Avatar</label>
+                <input
+                  type="file"
+                  name="avatar"
+                  id="avatar"
+                  className="w-0 h-0"
+                />
+                <p className="text-center flex flex-col gap-2 b-dsh-spaced rounded-md py-2">
+                  <span className="mx-auto bg-neutral-700 border-neutral-500 rounded-xl p-2">
+                    <img src={upload} alt="" className="mx-auto w-5" />
+                  </span>
+                  <span className="my-auto">
+                    Drag and drop or click to upload
+                  </span>
+                </p>
+                <p className="text-xs flex text-neutral-500 mt-2">
+                  <img src={info} alt="" className="my-auto" />
+                  <span className="my-auto">
+                    Upload your photo (JPG or PNG, max size: 500KB)
+                  </span>
                 </p>
               </div>
               <div className="form-control grid text-left gap-2">
-                <label htmlFor="fname">Full Name</label>
+                <label htmlFor="fname" className="label-form">Full Name</label>
                 <input
                   type="text"
                   name="fname"
@@ -47,7 +52,7 @@ const ConferenceTicket: React.FC = () => {
                 />
               </div>
               <div className="form-control grid text-left gap-2">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email"  className="label-form">Email Address</label>
                 <input
                   type="email"
                   name="email"
@@ -57,7 +62,7 @@ const ConferenceTicket: React.FC = () => {
                 />
               </div>
               <div className="form-control grid text-left gap-2">
-                <label htmlFor="ghuname">Github Username</label>
+                <label htmlFor="ghuname"  className="label-form">Github Username</label>
                 <input
                   type="text"
                   name="ghuname"
@@ -67,7 +72,7 @@ const ConferenceTicket: React.FC = () => {
                 />
               </div>
               <div className="form-control">
-                <button className="py-2 w-full rounded-md bg-orange-700 text-neutral-900 font-ixbold">
+                <button className="py-2 w-full rounded-md text-xs bg-orange-700 text-neutral-900 font-ixbold">
                   Generate My Ticket
                 </button>
               </div>
