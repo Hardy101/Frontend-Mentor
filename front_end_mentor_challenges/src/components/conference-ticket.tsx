@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/images/logo-full.svg";
 import info from "../assets/images/icon-info.svg";
 import upload from "../assets/images/icon-upload.svg";
 
+interface FormData {
+  name: string;
+  email: string;
+  guname: string;
+}
+
 const ConferenceTicket: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    guname: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>):void => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
   return (
     <>
       <main className="px-8 text-neutral-0 bg-[url('./assets/images/background-desktop.png')] bg-[50%] bg-center bg-no-repeat font-ir">
@@ -27,7 +43,7 @@ const ConferenceTicket: React.FC = () => {
                   id="avatar"
                   className="w-0 h-0"
                 />
-                <p className="text-center flex flex-col gap-2 b-dsh-spaced rounded-md py-2">
+                <p className="text-center flex flex-col gap-2 bg-neutral-900 border border-dashed border-neutral-500 rounded-md rounded-md py-2">
                   <span className="mx-auto bg-neutral-700 border-neutral-500 rounded-xl p-2">
                     <img src={upload} alt="" className="mx-auto w-5" />
                   </span>
@@ -35,7 +51,7 @@ const ConferenceTicket: React.FC = () => {
                     Drag and drop or click to upload
                   </span>
                 </p>
-                <p className="text-xs flex text-neutral-500 mt-2">
+                <p className="text-xs flex text-neutral-500 mt-2 ">
                   <img src={info} alt="" className="my-auto" />
                   <span className="my-auto">
                     Upload your photo (JPG or PNG, max size: 500KB)
@@ -43,30 +59,51 @@ const ConferenceTicket: React.FC = () => {
                 </p>
               </div>
               <div className="form-control grid text-left gap-2">
-                <label htmlFor="fname" className="label-form">Full Name</label>
+                <label htmlFor="fname" className="label-form">
+                  Full Name
+                </label>
                 <input
                   type="text"
                   name="fname"
                   id="fname"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="p-2 rounded-lg bg-neutral-900 border border-neutral-500 placeholder:text-neutral-500 text-sm outline-none"
                 />
               </div>
               <div className="form-control grid text-left gap-2">
-                <label htmlFor="email"  className="label-form">Email Address</label>
+                <label htmlFor="email" className="label-form">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   name="email"
                   id="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="example@email.com"
                   className="p-2 rounded-lg bg-neutral-900 border border-neutral-500 placeholder:text-neutral-500 text-sm outline-none"
                 />
+                <p
+                  id="errorEmail"
+                  className="hidden text-xs flex gap-2 text-orange-500"
+                >
+                  <img src={info} alt="" className="my-auto" />
+                  <span className="my-auto">
+                    Please enter a valid email address
+                  </span>
+                </p>
               </div>
               <div className="form-control grid text-left gap-2">
-                <label htmlFor="ghuname"  className="label-form">Github Username</label>
+                <label htmlFor="ghuname" className="label-form">
+                  Github Username
+                </label>
                 <input
                   type="text"
                   name="ghuname"
                   id="ghubname"
+                  value={formData.guname}
+                  onChange={handleChange}
                   placeholder="@yourusername"
                   className="p-2 rounded-lg bg-neutral-900 border border-neutral-500 placeholder:text-neutral-500 text-sm outline-none"
                 />
